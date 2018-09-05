@@ -1,0 +1,30 @@
+{
+  "name": "@mattak/name_order_editor",
+  "version": "1.0.0",
+  "description": "Ordering gameobject by name",
+  "homepage": "https://github.com/mattak/NameOrderEditor",
+  "bugs": {
+    "url": "https://github.com/mattak/NameOrderEditor/issues"
+  },
+  "scripts": {
+    "umm:init": "umm-init",
+    "umm:generate_assembly_definition": "umm-generate_assembly_definition",
+    "umm:module:install": "umm-module-install",
+    "umm:module:uninstall": "umm-module-uninstall",
+    "postinstall": "npm run --silent umm:module:install",
+    "postuninstall": "npm run --silent umm:module:uninstall"
+  },
+  "author": "Takuma Maruyama",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mattak/NameOrderEditor"
+  },
+  "files": [
+    "Assets"
+  ],
+  "dependencies": {
+    "@umm/scripts": "umm/scripts#^1.0.0"
+  },
+  "devDependencies": {}
+}
