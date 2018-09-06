@@ -16,8 +16,8 @@ yarn add "mattak/NumberingEditor#^1.0.0"
 
 ## Usage
 
-Open `Name Order` window.
-(Unity3D > Window > Name Order)
+Open `Numbering` window.
+(Unity3D > Window > Numbering)
 
 ![open](./art/open.gif)
 
