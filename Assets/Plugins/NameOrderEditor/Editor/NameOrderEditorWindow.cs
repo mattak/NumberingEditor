@@ -58,7 +58,7 @@ namespace NameOrderEditor
             this.orderingOffset = EditorGUILayout.IntField("Ordering Offset", this.orderingOffset);
 
             // buttons
-            if (GUILayout.Button("Rename to order"))
+            if (GUILayout.Button("Rename"))
             {
                 this.Rename(this.selectionObjects);
             }
@@ -99,13 +99,13 @@ namespace NameOrderEditor
                 return;
             }
 
-            if (match.Groups.Count < 1)
+            if (match.Groups.Count < 2)
             {
                 Debug.LogWarningFormat("Basename regex does not contains regex group: {0}", this.basenameRegexFormat);
                 return;
             }
 
-            var basename = match.Groups[0];
+            var basename = match.Groups[1];
 
             for (var i = 0; i < objects.Length; i++)
             {
@@ -119,23 +119,32 @@ namespace NameOrderEditor
             if (objects == null) return;
             if (objects.Length < 1) return;
 
-            var p = 0;
-            var sources = objects.Select(it => new {Index = p++, Data = it}).ToList();
-            var dests = sources.OrderBy(it => it.Data.name).ToList();
+            var sources = Enumerable.Range(0, objects.Length)
+                .Select(index => new {Index = index, Data = objects[index]})
+                .ToList();
+            var length = sources.Count;
 
-            for (var i = 0; i < dests.Count; i++)
+            // NOTE:
+            // Cost: O(N*N*log(N)).
+            // It's slow, but affordable with minimize swapping cost
+            for (var i = 0; i < length; i++)
             {
+                var dests = Enumerable.Range(i, length - i)
+                    .Select(index => new {Index = index, Data = sources[index].Data})
+                    .OrderBy(it => it.Data.name)
+                    .ToList();
+
                 var src = sources[i];
-                var dst = dests[i];
+                var dst = dests[0];
 
                 if (src.Index == dst.Index) continue;
 
-                sources[dests[i].Index] = src;
-                sources[src.Index] = dst;
+                sources[dst.Index] = src;
+                sources[i] = dst;
                 this.Swap(src.Data, dst.Data);
             }
 
-            Selection.instanceIDs = dests.Select(it => it.Data.GetInstanceID()).ToArray();
+            Selection.instanceIDs = sources.Select(it => it.Data.GetInstanceID()).ToArray();
         }
 
         private void Swap(GameObject src, GameObject dst)
@@ -145,10 +154,45 @@ namespace NameOrderEditor
             var srcParent = src.transform.parent;
             var dstParent = dst.transform.parent;
 
-            dst.transform.parent = srcParent;
-            src.transform.parent = dstParent;
-            dst.transform.SetSiblingIndex(srcIndex);
-            src.transform.SetSiblingIndex(dstIndex);
+            if (dstParent.GetInstanceID() == src.transform.GetInstanceID())
+            {
+                dst.transform.SetParent(src.transform.parent);
+                this.ChangeParentOfChildren(dst.transform, src.transform);
+                src.transform.SetParent(dst.transform);
+            }
+            else if (srcParent.GetInstanceID() == dst.transform.GetInstanceID())
+            {
+                src.transform.SetParent(dst.transform.parent);
+                this.ChangeParentOfChildren(src.transform, dst.transform);
+                dst.transform.SetParent(src.transform);
+            }
+            else
+            {
+                dst.transform.parent = srcParent;
+                src.transform.parent = dstParent;
+            }
+
+            if (srcIndex < dstIndex)
+            {
+                dst.transform.SetSiblingIndex(srcIndex);
+                src.transform.SetSiblingIndex(dstIndex);
+            }
+            else
+            {
+                src.transform.SetSiblingIndex(dstIndex);
+                dst.transform.SetSiblingIndex(srcIndex);
+            }
+        }
+
+        private void ChangeParentOfChildren(Transform fromParent, Transform toParent)
+        {
+            var childCount = fromParent.childCount;
+            var children = Enumerable.Range(0, childCount).Select(i => fromParent.GetChild(i)).ToList();
+
+            foreach (var child in children)
+            {
+                child.parent = toParent;
+            }
         }
     }
 }
