@@ -21,7 +21,7 @@ Open `Name Order` window.
 
 ![open](./art/open.gif)
 
-Rename by name order
+Numbering GameObject
 
 ![rename](./art/rename.gif)
 
