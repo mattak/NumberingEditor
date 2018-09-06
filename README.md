@@ -1,6 +1,6 @@
 # NameOrderEditor
 
-Ordering Unity3D GameObject by name.
+Numbering GameObject on Unity3D
 
 ## Install
 
