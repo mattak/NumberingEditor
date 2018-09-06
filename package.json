@@ -1,10 +1,10 @@
 {
-  "name": "@mattak/name_order_editor",
+  "name": "@mattak/numbering_editor",
   "version": "1.0.0",
-  "description": "Ordering gameobject by name",
-  "homepage": "https://github.com/mattak/NameOrderEditor",
+  "description": "Numbering gameobject",
+  "homepage": "https://github.com/mattak/NumberingEditor",
   "bugs": {
-    "url": "https://github.com/mattak/NameOrderEditor/issues"
+    "url": "https://github.com/mattak/NumberingEditor/issues"
   },
   "scripts": {
     "umm:init": "umm-init",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mattak/NameOrderEditor"
+    "url": "git@github.com:mattak/NumberingEditor"
   },
   "files": [
     "Assets"

@@ -1,4 +1,4 @@
-# NameOrderEditor
+# NumberingEditor
 
 Numbering GameObject on Unity3D
 
@@ -6,12 +6,12 @@ Numbering GameObject on Unity3D
 
 Install from latest unitypackage!
 
-- https://github.com/mattak/NameOrderEditor/releases
+- https://github.com/mattak/NumberingEditor/releases
 
 or If you use umm, just type
 
 ```
-yarn add "mattak/NameOrderEditor#^1.0.0"
+yarn add "mattak/NumberingEditor#^1.0.0"
 ```
 
 ## Usage

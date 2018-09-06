@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: NameOrderEditor
+  productName: NumberingEditor
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -649,7 +649,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: f897cc26-a864-4c5c-97d2-4a4c4336c3d4
-  projectName: NameOrderEditor
+  projectName: NumberingEditor
   organizationId: mattak
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
