@@ -3,20 +3,20 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
-namespace NameOrderEditor
+namespace NumberingEditor
 {
-    public class NameOrderEditorWindow : EditorWindow
+    public class NumberingEditorWindow : EditorWindow
     {
-        [MenuItem("Window/Name Order")]
+        [MenuItem("Window/Numbering")]
         static void Init()
         {
             var window =
-                (NameOrderEditorWindow) GetWindow(typeof(NameOrderEditorWindow), true, "Name Order");
+                (NumberingEditorWindow) GetWindow(typeof(NumberingEditorWindow), true, "Numbering");
             window.Show();
         }
 
-        private const string BasenameKey = "NameOrderEditor.Basename";
-        private const string ReplaceKey = "NameOrderEditor.Replace";
+        private const string BasenameKey = "NumberingEditor.Basename";
+        private const string ReplaceKey = "NumberingEditor.Replace";
 
         private GameObject[] selectionObjects;
         private string basenameRegexFormat = @"^(\S+)";
@@ -58,9 +58,9 @@ namespace NameOrderEditor
             this.orderingOffset = EditorGUILayout.IntField("Ordering Offset", this.orderingOffset);
 
             // buttons
-            if (GUILayout.Button("Rename"))
+            if (GUILayout.Button("Numbering"))
             {
-                this.Rename(this.selectionObjects);
+                this.Numbering(this.selectionObjects);
             }
 
             if (GUILayout.Button("Sort"))
@@ -85,7 +85,7 @@ namespace NameOrderEditor
                     .ToArray();
         }
 
-        private void Rename(GameObject[] objects)
+        private void Numbering(GameObject[] objects)
         {
             if (objects == null) return;
             if (objects.Length < 1) return;
