@@ -11,7 +11,7 @@ Install from latest unitypackage!
 or If you use umm, just type
 
 ```
-yarn add "mattak/name_order_editor#^1.0.0"
+yarn add "mattak/NameOrderEditor#^1.0.0"
 ```
 
 ## Usage
