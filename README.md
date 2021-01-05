@@ -8,10 +8,10 @@ Install from latest unitypackage!
 
 - https://github.com/mattak/NumberingEditor/releases
 
-or If you use umm, just type
+or ad following to your `Packages/manifest.json`
 
 ```
-yarn add "mattak/NumberingEditor#^1.0.0"
+"me.mattak.numberingeditor": "https://github.com/mattak/NumberingEditor.git?path=Assets/Plugins/NumberingEditor"
 ```
 
 ## Usage
