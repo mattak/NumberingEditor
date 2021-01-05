@@ -3,7 +3,7 @@
     "displayName": "NumberingEditor",
     "description": "Numbering editor is game object naming tool",
     "version": "0.0.1",
-    "unity": "2019.2",
+    "unity": "2020.1",
     "author": {
         "name": "Takuma Maruyama",
         "url": "https://github.com/mattak",
