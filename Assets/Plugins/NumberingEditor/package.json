@@ -1,0 +1,21 @@
+{
+    "name": "me.mattak.numberingeditor",
+    "displayName": "NumberingEditor",
+    "description": "Numbering editor is game object naming tool",
+    "version": "0.0.1",
+    "unity": "2019.2",
+    "author": {
+        "name": "Takuma Maruyama",
+        "url": "https://github.com/mattak",
+        "email": "mattak.me@gmail.com"
+    },
+    "license": "MIT",
+    "keywords": [],
+    "category": "",
+    "dependencies": {
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattak/NumberingEditor"
+    }
+}
